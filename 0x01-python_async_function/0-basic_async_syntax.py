@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Python and Async"""
 import asyncio
-import time
 import random
 from typing import Optional
 
