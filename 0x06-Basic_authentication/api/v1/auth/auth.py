@@ -33,10 +33,3 @@ class Auth:
         """ auth method
         """
         return None
-
-
-class BasicAuth(Auth):
-    """ auth method
-        returns authorization header
-    """
-    pass
