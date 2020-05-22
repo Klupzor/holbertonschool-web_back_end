@@ -36,4 +36,7 @@ class Auth:
 
 
 class BasicAuth(Auth):
+    """ auth method
+        returns authorization header
+    """
     pass
