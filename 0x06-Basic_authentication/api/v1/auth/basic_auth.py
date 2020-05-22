@@ -21,9 +21,10 @@ class BasicAuth(Auth):
     def decode_base64_authorization_header(self, base64_str: str) -> str:
         """ returns the decoded value of a Base64 string
         """
-        if (base64_str and
-                type(base64_str) == str):
+        if base64_str and type(base64_str) == str:
             try:
                 b = base64_str.encode('utf-8')
+                base = base64.b64decode(b)
+                return base.decode('utf-8')
             except Exception:
                 return None
