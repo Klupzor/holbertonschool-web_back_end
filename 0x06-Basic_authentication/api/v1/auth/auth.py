@@ -15,7 +15,7 @@ class Auth:
             return True
 
         for ex in excluded_paths:
-            ex = ex[:-1] ex.endswith("*") else ex
+            ex = ex[:-1] if ex.endswith("*") else ex
             if ex.find(path) != -1:
                 return False
         return True
