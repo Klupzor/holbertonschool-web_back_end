@@ -44,7 +44,8 @@ class BasicAuth(Auth):
                                      user_pwd: str) -> TypeVar('User'):
         """ returns the User instance based on his email and password
         """
-        if user_email and user_pwd:
+        if (user_email and user_pwd and
+                type(user_email) == str and type(user_pwd) == str):
             users = User.search({"email": user_email})
             for user in users:
                 if user and user.is_valid_password(user_pwd):
