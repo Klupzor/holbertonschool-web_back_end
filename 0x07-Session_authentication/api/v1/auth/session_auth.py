@@ -9,10 +9,7 @@ from uuid import uuid4
 class SessionAuth(Auth):
     """ class to manage the API authentication.
     """
-    def __init__(self):
-        """ init method
-        """
-        self.user_id_by_session_id = {}
+    user_id_by_session_id = {}
 
     def create_session(self, user_id: str = None) -> str:
         """ creates a Session ID for a user_id
@@ -20,5 +17,5 @@ class SessionAuth(Auth):
         if not user_id or type(user_id) != str:
             return None
         session_id = str(uuid4())
-        self.user_id_by_session_id[session_id] = user_id
+        SessionAuth.user_id_by_session_id[session_id] = user_id
         return session_id
