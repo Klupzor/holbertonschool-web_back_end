@@ -64,3 +64,17 @@ class BasicAuth(Auth):
             decoded_b64 = self.decode_base64_authorization_header(b64)
             (email, password) = self.extract_user_credentials(decoded_b64)
             return self.user_object_from_credentials(email, password)
+
+    def destroy_session(self, request=None) -> bool:
+        """ Deletes the user session / logout
+        """
+        if not request:
+            return False
+        session_cookie = self.session_cookie(request)
+        if not session_cookie:
+            return False
+        user_id = self.user_id_for_session_id(session_cookie)
+        if not user_id:
+            return False
+        self.user_id_by_session_id.pop(session_cookie)
+        return True
