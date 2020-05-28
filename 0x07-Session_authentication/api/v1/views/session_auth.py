@@ -3,7 +3,6 @@
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views
-from api.v1.app import auth
 from models.user import User
 from os import getenv
 
@@ -24,6 +23,7 @@ def login():
 
     for user in users:
         if user.is_valid_password(pwd):
+            from api.v1.app import auth
             session = auth.create_session(user.id)
             json = jsonify(user.to_json())
             json.set_cookie(getenv('SESSION_NAME'), session)
@@ -37,6 +37,7 @@ def login():
 def logout():
     """ Destroy the session
     """
+    from api.v1.app import auth
     if not auth.destroy_session(request):
         abort(404)
     return jsonify({}), 200
