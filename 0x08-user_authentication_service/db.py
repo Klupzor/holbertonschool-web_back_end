@@ -10,6 +10,8 @@ from user import Base, User
 
 
 class DB:
+    """ DB Class in charge of managing the database
+    """
     def __init__(self):
         """ DB Class in charge of managing the database
         """
