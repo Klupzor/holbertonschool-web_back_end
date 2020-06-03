@@ -24,7 +24,7 @@ class Auth:
         self._db = DB()
 
     def register_user(self, email: str, password: str) -> User:
-        """ Register user
+        """ Register user with email and password
         """
         if email and password:
             try:
