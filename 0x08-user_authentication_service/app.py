@@ -23,14 +23,14 @@ def users() -> str:
     data = request.get_json()
     email = data.get('email')
     password = data.get('password')
-    if email and password:
-        try:
-            AUTH.register_user(email, password)
-            return jsonify({
-                "email": email, "message": "user created"
-            }), 200
-        except Exception:
-            return jsonify({"message": "email already registered"}), 400
+
+    try:
+        AUTH.register_user(email, password)
+        return jsonify({
+            "email": email, "message": "user created"
+        }), 200
+    except Exception:
+        return jsonify({"message": "email already registered"}), 400
 
 
 if __name__ == "__main__":
