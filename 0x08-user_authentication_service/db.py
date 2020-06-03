@@ -48,6 +48,7 @@ class DB:
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """ Update user
+            returns None
         """
         user = self.find_user_by(id=user_id)
 
