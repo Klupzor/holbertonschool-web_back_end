@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" DB Class
+""" DB Class in charge of managing the database
 """
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
