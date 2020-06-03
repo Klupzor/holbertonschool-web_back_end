@@ -11,7 +11,7 @@ from user import Base, User
 
 class DB:
     def __init__(self):
-        """ init method
+        """ DB Class in charge of managing the database
         """
         self._engine = create_engine("sqlite:///a.db", echo=False)
         Base.metadata.drop_all(self._engine)
