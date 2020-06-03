@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" DB
+""" DB Class
 """
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -27,7 +27,7 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email, hashed_password):
+    def add_user(self, email: str, hashed_password: str) -> User:
         """ returns new user
         """
         new_user = User(email=email, hashed_password=hashed_password)
@@ -35,7 +35,7 @@ class DB:
         self._session.commit()
         return new_user
 
-    def find_user_by(self, **kargs):
+    def find_user_by(self, **kargs) -> User:
         """ returns found user
         """
         try:
