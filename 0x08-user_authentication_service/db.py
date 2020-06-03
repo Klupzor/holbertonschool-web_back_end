@@ -45,3 +45,13 @@ class DB:
         if not user:
             raise NoResultFound
         return user
+
+    def update_user(self, user_id: str, **kwargs) -> None:
+        """ Update user
+        """
+        user = self.find_user_by(id=user_id)
+
+        for key, val in kwargs.items():
+            setattr(user, key, val)
+
+        self._session.commit()
