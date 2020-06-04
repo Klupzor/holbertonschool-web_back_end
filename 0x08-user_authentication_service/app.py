@@ -33,7 +33,7 @@ def users() -> str:
 
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
-def sessions() -> str:
+def login() -> str:
     """ Create session and return cookie
     """
     email = request.form.get('email')
