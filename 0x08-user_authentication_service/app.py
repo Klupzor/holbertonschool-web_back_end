@@ -20,9 +20,8 @@ def index() -> str:
 def users() -> str:
     """ post new user in /users
     """
-    data = request.get_json()
-    email = data.get('email')
-    password = data.get('password')
+    email = request.form.get('email')
+    password = request.form.get('password')
 
     try:
         AUTH.register_user(email, password)
