@@ -16,12 +16,12 @@ status = data.count_documents({"method": "GET", "path": "/status"})
 
 message = f"{logs} logs\n\
 Methods:\n\
+    method GET: {get}\n\
     method POST: {post}\n\
     method PUT: {put}\n\
-    method GET: {get}\n\
     method PATCH: {patch}\n\
     method DELETE: {delete}\n\
-    {status} status check\
+{status} status check\
 "
 
 print(message)
