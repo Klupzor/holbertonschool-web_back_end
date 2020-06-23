@@ -20,11 +20,11 @@ def log_stats():
     message = f"\
 {logs} logs\n\
 Methods:\n\
-    method GET: {get}\n\
-    method POST: {post}\n\
-    method PUT: {put}\n\
-    method PATCH: {patch}\n\
-    method DELETE: {delete}\n\
+\tmethod GET: {get}\n\
+\tmethod POST: {post}\n\
+\tmethod PUT: {put}\n\
+\tmethod PATCH: {patch}\n\
+\tmethod DELETE: {delete}\n\
 {status} status check\
 "
     print(message)
