@@ -4,17 +4,21 @@
 from pymongo import MongoClient
 
 
-client = MongoClient('mongodb://127.0.0.1:27017')
-data = client.logs.nginx
-logs = data.count_documents({})
-get = data.count_documents({"method": "GET"})
-post = data.count_documents({"method": "POST"})
-put = data.count_documents({"method": "PUT"})
-patch = data.count_documents({"method": "PATCH"})
-delete = data.count_documents({"method": "DELETE"})
-status = data.count_documents({"method": "GET", "path": "/status"})
+def log_stats():
+    """ script that provides some stats about Nginx logs stored in MongoDB:
+    """
+    client = MongoClient('mongodb://127.0.0.1:27017')
+    data = client.logs.nginx
+    logs = data.count_documents({})
+    get = data.count_documents({"method": "GET"})
+    post = data.count_documents({"method": "POST"})
+    put = data.count_documents({"method": "PUT"})
+    patch = data.count_documents({"method": "PATCH"})
+    delete = data.count_documents({"method": "DELETE"})
+    status = data.count_documents({"method": "GET", "path": "/status"})
 
-message = f"{logs} logs\n\
+    message = f"\
+{logs} logs\n\
 Methods:\n\
     method GET: {get}\n\
     method POST: {post}\n\
@@ -23,5 +27,8 @@ Methods:\n\
     method DELETE: {delete}\n\
 {status} status check\
 "
+    print(message)
 
-print(message)
+
+if __name__ == "__main__":
+    log_stats()
