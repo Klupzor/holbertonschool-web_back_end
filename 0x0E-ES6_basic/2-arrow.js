@@ -8,4 +8,4 @@ const getNeighborhoodsList = () => {
   };
 };
 
-module.exports = getNeighborhoodsList;
+export default getNeighborhoodsList;
