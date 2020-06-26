@@ -1,9 +1,6 @@
 /* eslint-disable no-plusplus */
 export default function createIteratorObject(report) {
-  const employees = Object.values(report.allEmployees).reduce((a, b) => {
-    a.push(...b);
-    return a;
-  }, []);
+  const employees = Object.values(report.allEmployees);
   let nextIndex = 0;
   return {
     next() {
