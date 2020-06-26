@@ -1,7 +1,5 @@
 const { default: taskBlock } = require("./1-block-scoped")
 
-require("./1-block-scoped")
-
 test('taskBlock-True', () => {
   expect(taskBlock(true)).toStrictEqual([false, true]);
 });
