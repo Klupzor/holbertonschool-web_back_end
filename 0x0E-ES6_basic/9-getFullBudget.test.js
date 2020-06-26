@@ -1,9 +1,10 @@
-const { default: getFullBudgetObject } = require("./9-getFullBudget");
+/* eslint-disable jest/prefer-expect-assertions */
+const { default: getFullBudgetObject } = require('./9-getFullBudget');
 
+// eslint-disable-next-line jest/require-top-level-describe
 test('object assignment', () => {
-  const obj = getFullBudgetObject(1, 2, 3);
+  const fullBudget = getFullBudgetObject(20, 50, 10);
 
-  expect(obj.capita).toBe(3);
-  expect(obj.getIncomeInDollars(1)).toBe("1");
-  expect(obj.getIncomeInEuros(1)).toBe("1 euros");
+  expect(fullBudget.getIncomeInDollars(fullBudget.income)).toBe('$20');
+  expect(fullBudget.getIncomeInEuros(fullBudget.income)).toBe('20 euros');
 });
