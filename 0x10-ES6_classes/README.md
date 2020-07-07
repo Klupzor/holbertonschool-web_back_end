@@ -1,6 +1,8 @@
 0x10. ES6 classes
 =================
 
+[Metaprogramming ES6](https://www.keithcirkel.co.uk/metaprogramming-in-es6-symbols/#symbolspecies)
+
 Setup
 -----
 
