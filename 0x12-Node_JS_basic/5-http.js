@@ -24,7 +24,7 @@ function csvJSON(csv) {
 }
 
 async function countStudents(path) {
-  const msg = [];
+  const msg = ['This is the list of our students\n'];
   const data = await readFile(path, 'utf8');
   const csv = csvJSON(data);
 
