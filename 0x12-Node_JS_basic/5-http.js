@@ -24,8 +24,14 @@ function csvJSON(csv) {
 }
 
 async function countStudents(path) {
-  const msg = ['This is the list of our students\n'];
-  const data = await readFile(path, 'utf8');
+  // eslint-disable-next-line prefer-const
+  let msg = [];
+  let data;
+  try {
+    data = await readFile(path, 'utf8');
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
   const csv = csvJSON(data);
 
   msg.push(`Number of students: ${csv.length}\n`);
@@ -57,12 +63,17 @@ const app = http.createServer(async (req, res) => {
       break;
 
     case '/students':
-      data = await countStudents('database.csv');
-      data.forEach((el) => {
-        res.write(el);
-      });
-      res.statusCode = 200;
-      res.end();
+      res.write('This is the list of our students\n');
+      try {
+        data = await countStudents('databaseF.csv');
+        data.forEach((el) => {
+          res.write(el);
+        });
+        res.statusCode = 200;
+        res.end();
+      } catch (error) {
+        res.end(error.message);
+      }
       break;
 
     default:
