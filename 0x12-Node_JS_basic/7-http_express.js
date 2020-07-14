@@ -1,7 +1,9 @@
-const http = require('http');
 const fs = require('fs');
 const util = require('util');
+const express = require('express');
 
+const app = express();
+const port = 1245;
 const readFile = util.promisify(fs.readFile);
 
 function csvJSON(csv) {
@@ -51,38 +53,22 @@ async function countStudents(path) {
   return msg;
 }
 
-const hostname = '127.0.0.1';
-const port = 1245;
-
-const app = http.createServer(async (req, res) => {
+app.get('/', (req, res) => res.send('Hello Holberton School!'));
+app.get('/students', async (req, res) => {
   let data;
-  switch (req.url) {
-    case '/':
-      res.statusCode = 200;
-      res.end('Hello Holberton School!');
-      break;
-
-    case '/students':
-      res.write('This is the list of our students\n');
-      try {
-        data = await countStudents(process.argv[2]);
-        data.forEach((el) => {
-          res.write(el);
-        });
-        res.statusCode = 200;
-        res.end();
-      } catch (error) {
-        res.end(error.message);
-      }
-      break;
-
-    default:
-      res.statusCode = 400;
-      res.end('wrong url');
-      break;
+  res.write('This is the list of our students\n');
+  try {
+    data = await countStudents(process.argv[2]);
+    data.forEach((el) => {
+      res.write(el);
+    });
+    res.statusCode = 200;
+    res.end();
+  } catch (error) {
+    res.end(error.message);
   }
 });
 
-app.listen(port, hostname);
+app.listen(port);
 
 module.exports = app;
