@@ -1,4 +1,7 @@
 const fs = require('fs');
+const util = require('util');
+
+const readFile = util.promisify(fs.readFile);
 
 function csvJSON(csv) {
   const lines = csv.split('\n');
@@ -21,7 +24,7 @@ function csvJSON(csv) {
 
 module.exports = async function countStudents(path) {
   try {
-    const data = await fs.readFile(path, 'utf8');
+    const data = await readFile(path, 'utf8');
     const csv = csvJSON(data);
     console.log(`Number of students: ${csv.length}`);
     const cs = [];
