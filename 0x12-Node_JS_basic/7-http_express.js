@@ -51,7 +51,7 @@ async function countStudents(path) {
 
   msg.push(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}\n`);
 
-  msg.push(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`);
+  msg.push(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}\n`);
   return msg;
 }
 
