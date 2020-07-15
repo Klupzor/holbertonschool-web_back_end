@@ -15,12 +15,14 @@ function csvJSON(csv) {
   for (let i = 1; i < lines.length; i += 1) {
     const obj = {};
     const currentline = lines[i].split(',');
-
-    for (let j = 0; j < headers.length; j += 1) {
-      obj[headers[j]] = currentline[j];
+    if (currentline.length > 1) {
+      for (let j = 0; j < headers.length; j += 1) {
+        if (currentline[j] && currentline[j].length !== 0) {
+          obj[headers[j]] = currentline[j];
+        }
+      }
+      result.push(obj);
     }
-
-    result.push(obj);
   }
   return result;
 }
