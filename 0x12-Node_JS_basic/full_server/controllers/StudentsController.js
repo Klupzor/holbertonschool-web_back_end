@@ -21,11 +21,11 @@ module.exports = class StudentsController {
     switch (major) {
       case 'CS':
         msg = data[1].split('List');
-        return res.send(`List${msg[1]}`);
+        return res.send(`List${msg[1].slice(0, -1)}`);
 
       case 'SWE':
         msg = data[2].split('List');
-        return res.send(`List${msg[1]}`);
+        return res.send(`List${msg[1].slice(0, -1)}`);
 
       default:
         return res.status(500).send('Major parameter must be CS or SWE');
