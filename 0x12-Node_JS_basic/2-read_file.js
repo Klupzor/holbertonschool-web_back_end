@@ -22,7 +22,12 @@ function csvJSON(csv) {
 }
 
 module.exports = function countStudents(path) {
-  const data = fs.readFileSync(path, 'utf8');
+  let data;
+  try {
+    data = fs.readFileSync(path, 'utf8');
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
   const csv = csvJSON(data);
   console.log(`Number of students: ${csv.length}`);
   const cs = [];
