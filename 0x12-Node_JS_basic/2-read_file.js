@@ -22,22 +22,18 @@ function csvJSON(csv) {
 }
 
 module.exports = function countStudents(path) {
-  fs.readFile(path, 'utf8', (err, data) => {
-    if (err) {
-      throw new Error('Cannot load the database');
+  const data = fs.readFileSync(path, 'utf8');
+  const csv = csvJSON(data);
+  console.log(`Number of students: ${csv.length}`);
+  const cs = [];
+  const swe = [];
+  csv.forEach((item) => {
+    if (item.field === 'CS') {
+      cs.push(item.firstname);
+    } else {
+      swe.push(item.firstname);
     }
-    const csv = csvJSON(data);
-    console.log(`Number of students: ${csv.length}`);
-    const cs = [];
-    const swe = [];
-    csv.forEach((item) => {
-      if (item.field === 'CS') {
-        cs.push(item.firstname);
-      } else {
-        swe.push(item.firstname);
-      }
-    });
-    console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
-    console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`);
   });
+  console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
+  console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`);
 };
