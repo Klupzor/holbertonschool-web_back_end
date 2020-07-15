@@ -35,7 +35,7 @@ async function readDatabase(path) {
   }
   const csv = csvJSON(data);
 
-  msg.push(`Number of students: ${csv.length}\n`);
+  msg.push('This is the list of our students\n');
   const cs = [];
   const swe = [];
   csv.forEach((item) => {
