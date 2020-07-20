@@ -11,7 +11,7 @@ function calculateNumber(type, a, b) {
             return num1 - num2;
         case 'DIVIDE':
             if (num2 === 0)
-                throw new Error("Can not divide by 0");
+                return("Error");
             return num1 / num2;
         default:
             throw new TypeError("only valid type: SUM | SUBTRACT | DIVIDE");

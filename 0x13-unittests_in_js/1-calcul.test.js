@@ -43,10 +43,10 @@ describe("test DIVIDE", function () {
         assert.equal(calc('DIVIDE', 8, 2), 4);
     }),
     it("check divide by 0", function () {
-        assert.throws(() => calc('DIVIDE', 20, 0), {
-            name: 'Error',
-            message: 'Can not divide by 0'
-          });
+        assert.equal(calc('DIVIDE', 10.3, 0).toLowerCase(), 'error');
+        assert.equal(calc('DIVIDE', 10.7, 0).toLowerCase(), 'error');
+        assert.equal(calc('DIVIDE', 10.3, 0.3).toLowerCase(), 'error');
+        assert.equal(calc('DIVIDE', 10.7, 0.2).toLowerCase(), 'error');
     }),
     it("check round up", function () {
         assert.equal(calc('DIVIDE', 7.5, 2), 4);
