@@ -1,10 +1,8 @@
-function calculateNumber(a, b, type) {
+function calculateNumber(type, a, b) {
     const num1 = Math.round(a);
     const num2 = Math.round(b);
     if (isNaN(num1) || isNaN(num2))
         throw new TypeError("two arguments must be a number");
-    if (!type)
-        throw new TypeError("type is mandatory");
 
     switch (type) {
         case 'SUM':
