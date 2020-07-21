@@ -9,5 +9,8 @@ describe('getPaymentTokenFromAPI', () => {
         assert(res, { data: 'Successful response from the API' })
         done();
       })
+      .catch((error) => {
+        done(error);
+      });
     });
   });
