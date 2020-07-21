@@ -3,14 +3,8 @@ const { expect } = require('chai');
 
 
 describe('getPaymentTokenFromAPI', () => {
-    it('waiting for the answer', function(done){
-      getPaymentTokenFromAPI(true)
-      .then((res) => {
-        expect(res).to.eql({ data: 'Successful response from the API' });
-        done();
-      })
-      .catch((error) => {
-        done(error);
-      });
+    it('waiting for the answer', async function(){
+      const res = await getPaymentTokenFromAPI(true)
+      expect(res).to.eql({ data: 'Successful response from the API' });
     });
   });
