@@ -3,9 +3,11 @@ const assert = require('assert');
 
 
 describe('getPaymentTokenFromAPI', () => {
-    it('waiting for the answer', async function(){
-      const response = await getPaymentTokenFromAPI(true);
-      assert(response, { data: 'Successful response from the API' })
-
+    it('waiting for the answer', function(done){
+      getPaymentTokenFromAPI(true)
+      .then((res) => {
+        assert(res, { data: 'Successful response from the API' })
+        done();
+      })
     });
   });
