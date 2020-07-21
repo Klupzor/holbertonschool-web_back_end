@@ -1,12 +1,12 @@
 const getPaymentTokenFromAPI = require('./6-payment_token');
-const assert = require('assert');
+const { expect } = require('chai');
 
 
 describe('getPaymentTokenFromAPI', () => {
     it('waiting for the answer', function(done){
       getPaymentTokenFromAPI(true)
       .then((res) => {
-        assert(res, { data: 'Successful response from the API' })
+        expect(res).to.eql({ data: 'Successful response from the API' });
         done();
       })
       .catch((error) => {
