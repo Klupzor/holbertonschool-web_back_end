@@ -8,6 +8,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/cart/:id', (req, res) => {
+    if(!Number(req.params.id))
+        res.status(404)
     res.send(`Payment methods for cart ${req.params.id}`)
 });
 

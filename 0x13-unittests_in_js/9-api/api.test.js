@@ -19,4 +19,10 @@ describe('Testing api', function() {
     });
     done()
   });
+  it('Fail 404', function (done) {
+    request({ url: 'http://localhost:7865/cart/string', method: 'GET' }, function (err, res, body) {
+      expect(res.statusCode).to.equal(404);
+      done();
+    });
+});
 });
